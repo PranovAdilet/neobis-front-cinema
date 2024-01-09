@@ -1,33 +1,4 @@
 
-
-
-
-const handlePaginationClick = (amountPage, getFilmsFunction) => {
-    let count = 1
-
-    const pagination = document.querySelector('.main__pagination')
-    const list = document.querySelector('.main__list')
-
-    pagination.innerHTML = ""
-    amountPage = amountPage ? amountPage <= 20 ? amountPage : 21 : 0
-
-
-    for (let i = 1; i < amountPage; i++) {
-        let spanPage = document.createElement('span')
-        spanPage.classList.add('main__pagination-count')
-        spanPage.textContent = i
-        pagination.appendChild(spanPage)
-        spanPage.addEventListener('click', () => {
-            count = i
-            list.innerHTML = ''
-            pagination.innerHTML = ''
-            pageCount = i
-            getFilmsFunction(getFilmsFunction)
-        })
-    }
-}
-
-
 const activeNavLink = () => {
     const items = document.querySelectorAll('.header__item')
 

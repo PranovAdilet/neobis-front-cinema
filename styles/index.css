@@ -84,12 +84,13 @@ html{
     display: flex;
     flex-wrap: wrap;
 
-    gap: 45px;
+    gap: 50px 45px;
+
 
 }
 .main__item{
     position: relative;
-
+    min-height: 416px;
     width: calc(25% - 33.8px) ;
 
 }
