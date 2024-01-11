@@ -219,29 +219,22 @@ html{
     }
 }
 
+
 .burger__menu{
-    position: absolute;
-
+    position: fixed;
     z-index: 100;
-    top: 0;
-
+    top: 117px;
     right: -100%;
+    visibility: hidden;
     opacity: 0;
-
     transform: translateX(-100%);
-    transition: 0.8s;
-
-
+    transition: .8s;
     background: white;
-
-
-    display: flex;
     flex-direction: column;
 
-    width: 400px;
-
-
     border-radius: 5px 0 0 5px;
+
+    width: 400px;
 
 }
 .burger__menu_active{
@@ -252,7 +245,11 @@ html{
     opacity: 1;
     right: 0;
 
+    visibility: visible;
+
+
 }
+
 
 .burger__item{
     display: flex;
