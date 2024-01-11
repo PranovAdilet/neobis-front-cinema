@@ -1,2 +1,6 @@
 
-.icon-heart-empty:before { content: '\e800'; } /* '' */
+.icon-heart:before { content: '\e800'; } /* '' */
+.icon-heart-empty:before { content: '\e801'; } /* '' */
+.icon-heart-1:before { content: '\e802'; } /* '' */
+.icon-heart-2:before { content: '\e803'; } /* '' */
+.icon-menu:before { content: '\f0c9'; } /* '' */
