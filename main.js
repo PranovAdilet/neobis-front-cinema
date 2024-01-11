@@ -67,7 +67,7 @@ const searchFilms = (e, input) => {
 
     clearActiveNavLinks()
 
-    if (window.innerWidth <= 1080){
+    if (window.innerWidth <= 1120){
         clearActiveNavBurgerLinks()
     }
 
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-if (window.innerWidth <= 1080){
+if (window.innerWidth <= 1120){
     initializationBurgerPages()
 }else{
     filmsPages()
