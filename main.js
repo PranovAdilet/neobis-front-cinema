@@ -299,6 +299,7 @@ const initializationBurgerPages = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const main = document.querySelector('.main')
     const burgerMenu = document.querySelector('.burger__menu')
     const burgerMenuBtn = document.querySelector('.burger__menu-btn')
 
@@ -310,7 +311,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!e.target.classList.contains('burger__menu-btn')) {
             burgerMenu.classList.remove('burger__menu_active')
         }
+        if (burgerMenu.classList.contains('burger__menu_active')){
+            main.style.filter = 'blur(3px)'
+        }else {
+            main.style.filter = 'none'
+        }
     }
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 85 && burgerMenu.classList.contains('burger__menu_active')) {
+            burgerMenu.classList.add('burger__menu_active-fixed')
+        }else if (window.scrollY < 80 && burgerMenu.classList.contains('burger__menu_active')){
+            burgerMenu.classList.remove('burger__menu_active-fixed')
+        }
+    })
 
     const handleClickBurgerMenu = () => {
         burgerMenuBtn.addEventListener('click', () => {

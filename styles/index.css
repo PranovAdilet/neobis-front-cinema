@@ -222,7 +222,7 @@ html{
 
 .burger__menu{
     position: fixed;
-    z-index: 100;
+    z-index: 10000;
     top: 117px;
     right: -100%;
     visibility: hidden;
@@ -235,19 +235,27 @@ html{
     border-radius: 5px 0 0 5px;
 
     width: 400px;
-
+    height: 100vh;
 }
 .burger__menu_active{
 
-    transition: .5s;
+    transition: .6s;
     transform: translateX(0);
 
     opacity: 1;
     right: 0;
 
     visibility: visible;
+}
+.burger__menu_active-fixed{
+    top: 0 !important;
+    transition: .6s;
+    transform: translateX(0);
 
+    opacity: 1;
+    right: 0;
 
+    visibility: visible;
 }
 
 
@@ -262,7 +270,7 @@ html{
 
     padding: 35px 0;
 
-    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 
     font-weight: 600;
 
@@ -281,4 +289,13 @@ html{
         color: white !important;
     }
     ;
+}
+
+.burger__menu-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    padding: 75px;
+
 }

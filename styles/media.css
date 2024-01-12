@@ -65,6 +65,9 @@
         font-size: 30px;
         min-width: 147px;
     }
+    .burger__menu{
+        top: 105px
+    }
 }
 
 @media screen and (max-width: 670px) {
@@ -139,6 +142,9 @@
     .main__item{
         width: calc(50% - 20px);
     }
+    .main__item-empty{
+        font-size: 25px;
+    }
 }
 
 
@@ -155,7 +161,7 @@
     }
     .burger__menu{
         width: 100%;
-
     }
+
 }
 
