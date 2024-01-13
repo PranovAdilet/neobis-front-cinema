@@ -161,7 +161,6 @@ const showFilms = (films) => {
 
 }
 const createItemFilm = (film, item) => {
-
     item.classList.add('main__item')
 
     const rating = !film.rating ? 9 : film.rating
@@ -169,7 +168,7 @@ const createItemFilm = (film, item) => {
     const url = film.posterUrlPreview || film.posterUrl
     const title = film.nameRu || film.nameEn || film.nameOriginal
 
-    const favorite = isFavorite(film.kinopoiskId)
+    const favorite = isFavorite(film.kinopoiskId || film.filmId)
 
     item.innerHTML = `
                 <span class="main__item-rating">${rating.toFixed(1)}</span>
@@ -222,7 +221,13 @@ const removeFromFavoritesPage = (film, item) => {
     const favoriteBtn = item.querySelector('.icon-heart-empty');
 
     if (film){
-        favorites = favorites.filter(favorite => favorite.kinopoiskId !== film.kinopoiskId);
+
+
+        favorites = favorites.filter(favorite => {
+            let favoriteId = favorite.kinopoiskId || favorite.filmId
+            let filmId = film.kinopoiskId || film.filmId
+            return  favoriteId !== filmId
+        });
         favoriteBtn.classList.remove('main__item-favorite_active');
     }
 
@@ -230,13 +235,17 @@ const removeFromFavoritesPage = (film, item) => {
 
     displayFavorites()
 }
+
 const isFavorite = (id) => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || []
 
     const isFavoriteFilm = updateLocalStorage()
 
     if (favorites !== null){
-        return isFavoriteFilm.some(item => item.kinopoiskId === id)
+        return isFavoriteFilm.some(item => {
+            let itemId = item.kinopoiskId || item.filmId
+            return itemId === id
+        })
     }
 }
 
@@ -249,16 +258,27 @@ const addFavorite = (film, item) => {
     const favoriteBtn = item.querySelector('.icon-heart-empty')
 
     if (favorites) {
-        const hasMatch = favorites.some(favorite => favorite.kinopoiskId === film.kinopoiskId)
+        const hasMatch = favorites.some(favorite => {
+            let favoriteId = favorite.kinopoiskId || favorite.filmId
+            let filmId = film.kinopoiskId || film.filmId
+
+            if (favoriteId !== undefined && filmId !== undefined){
+                return  favoriteId === filmId
+            }
+            return undefined
+        })
 
         if (hasMatch) {
-            favorites = favorites.filter(favorite => favorite.kinopoiskId !== film.kinopoiskId)
+            favorites = favorites.filter(favorite => {
+                let favoriteId = favorite.kinopoiskId || favorite.filmId
+                let filmId = film.kinopoiskId || film.filmId
+                return favoriteId !== filmId
+            })
             favoriteBtn.classList.remove('main__item-favorite_active')
         } else {
             favorites.push(film);
             favoriteBtn.classList.add('main__item-favorite_active')
         }
-
         localStorage.setItem('favorites', JSON.stringify(favorites))
     } else {
         let newFavorites = [film];
